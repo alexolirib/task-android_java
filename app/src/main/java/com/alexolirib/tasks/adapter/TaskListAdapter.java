@@ -1,4 +1,4 @@
-package com.devmasterteam.tasks.adapter;
+package com.alexolirib.tasks.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alexolirib.tasks.entities.TaskEntity;
+import com.alexolirib.tasks.viewholder.TaskViewHolder;
 import com.devmasterteam.tasks.R;
-import com.devmasterteam.tasks.entities.TaskEntity;
-import com.devmasterteam.tasks.viewholder.TaskViewHolder;
 
 import java.util.List;
 

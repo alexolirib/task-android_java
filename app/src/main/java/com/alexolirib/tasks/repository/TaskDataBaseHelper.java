@@ -1,10 +1,10 @@
-package com.devmasterteam.tasks.repository;
+package com.alexolirib.tasks.repository;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.devmasterteam.tasks.constants.DataBaseConstants;
+import com.alexolirib.tasks.constants.DataBaseConstants;
 
 class TaskDataBaseHelper extends SQLiteOpenHelper {
 

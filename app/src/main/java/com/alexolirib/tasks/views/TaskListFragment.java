@@ -1,4 +1,4 @@
-package com.devmasterteam.tasks.views;
+package com.alexolirib.tasks.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.devmasterteam.tasks.R;
-import com.devmasterteam.tasks.adapter.TaskListAdapter;
-import com.devmasterteam.tasks.entities.TaskEntity;
+import com.alexolirib.tasks.adapter.TaskListAdapter;
+import com.alexolirib.tasks.entities.TaskEntity;
 
 import java.util.ArrayList;
 import java.util.List;

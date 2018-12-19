@@ -1,4 +1,4 @@
-package com.devmasterteam.tasks.constants;
+package com.alexolirib.tasks.constants;
 
 public class TaskConstants {
 }

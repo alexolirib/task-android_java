@@ -1,4 +1,4 @@
-package com.devmasterteam.tasks.views;
+package com.alexolirib.tasks.views;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
