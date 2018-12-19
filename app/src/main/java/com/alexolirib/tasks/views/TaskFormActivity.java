@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.devmasterteam.tasks.R;
+import com.alexolirib.tasks.R;
 
 public class TaskFormActivity extends AppCompatActivity implements View.OnClickListener {
 

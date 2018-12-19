@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.alexolirib.tasks.entities.TaskEntity;
 import com.alexolirib.tasks.viewholder.TaskViewHolder;
-import com.devmasterteam.tasks.R;
+import com.alexolirib.tasks.R;
 
 import java.util.List;
 

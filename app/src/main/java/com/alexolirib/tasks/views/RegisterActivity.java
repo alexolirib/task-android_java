@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.devmasterteam.tasks.R;
+import com.alexolirib.tasks.R;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,8 +32,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.button_save) {
-            // TODO
+            //chamada api é async
+            this.handleSava();
         }
+    }
+
+    private void handleSava() {
+        String name = this.mViewHolder.editName.getText().toString();
+        String email = this.mViewHolder.editName.getText().toString();
+        String password = this.mViewHolder.editName.getText().toString();
     }
 
     /**

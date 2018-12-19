@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.devmasterteam.tasks.R;
+import com.alexolirib.tasks.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 

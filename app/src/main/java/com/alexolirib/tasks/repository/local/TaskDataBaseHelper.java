@@ -1,4 +1,4 @@
-package com.alexolirib.tasks.repository;
+package com.alexolirib.tasks.repository.local;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,7 +15,7 @@ class TaskDataBaseHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_PRIORITY =
             "create table " + DataBaseConstants.PRIORITY.TABLE_NAME + " ("
                     + DataBaseConstants.PRIORITY.COLUMNS.ID + " integer primary key, "
-                    + DataBaseConstants.PRIORITY.COLUMNS.DESCRIPTION + " text null);";
+                    + DataBaseConstants.PRIORITY.COLUMNS.DESCRIPTION + " text );";
 
     // Remoção de tabelas
     private static final String DROP_TABLE_PRIORITY = "DROP TABLE IF EXISTS " + DataBaseConstants.PRIORITY.TABLE_NAME;

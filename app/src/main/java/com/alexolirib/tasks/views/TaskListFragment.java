@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.devmasterteam.tasks.R;
+import com.alexolirib.tasks.R;
 import com.alexolirib.tasks.adapter.TaskListAdapter;
 import com.alexolirib.tasks.entities.TaskEntity;
 
