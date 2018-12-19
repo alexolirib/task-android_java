@@ -20,6 +20,6 @@ public class PersonManager {
             protected void onPostExecute(Boolean result) {
                 super.onPostExecute(result);
             }
-        }
+        };
     }
 }
