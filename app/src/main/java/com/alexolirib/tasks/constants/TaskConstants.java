@@ -40,6 +40,11 @@ public class TaskConstants {
         public static final String DELETE = "DELETE";
     }
 
+    public static class USER {
+        public static final String NAME = "name";
+        public static final String EMAIL = "email";
+    }
+
     public static class STATUS_CODE {
         public static final int SUCCESS =200;
         public static final int FORBINDDEN =403;

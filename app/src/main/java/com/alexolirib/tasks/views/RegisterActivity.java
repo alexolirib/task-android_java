@@ -1,11 +1,13 @@
 package com.alexolirib.tasks.views;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.alexolirib.tasks.R;
 import com.alexolirib.tasks.infra.operation.OperationListener;
@@ -54,11 +56,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         return new OperationListener<Boolean>(){
             @Override
             public void onSuccess(Boolean result) {
+                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                finish();
             }
 
             @Override
             public void onError(int errorCode, String errorMessage) {
-                super.onError(errorCode, errorMessage);
+                Toast.makeText(getApplication(), errorMessage,Toast.LENGTH_SHORT).show();
             }
         };
     }
