@@ -7,7 +7,7 @@ public class TaskConstants {
     }
 
     public static class ENDPOINT {
-        public static final String ROOT = "http://www.devmasterteam.com/cursoAndroid/API";
+        public static final String ROOT = "http://www.devmasterteam.com/cursoAndroidAPI";
 
         public static final String AUTHENTICATION_CREATE = "Authentication/Create";
         public static final String AUTHENTICATION_LOGIN = "Authentication/Login";
@@ -26,6 +26,13 @@ public class TaskConstants {
         public static final String PRIORITY_GET = "priority";
     }
 
+    public static class API_PARAMETER{
+        public static String NAME = "name";
+        public static String EMAIL = "email";
+        public static String PASSWORD = "password";
+        public static String RECEIVE_NEWS = "receivenews";
+    }
+
     public static class OPERATION_METHOD {
         public static final String GET = "GET";
         public static final String PUT = "PUT";
@@ -35,7 +42,7 @@ public class TaskConstants {
 
     public static class STATUS_CODE {
         public static final int SUCCESS =200;
-        public static final int FORBENDDEN =403;
+        public static final int FORBINDDEN =403;
         public static final int NOT_FOUND =404;
         public static final int INTERNAL_SERVER_ERROR =500;
         public static final int INTERNET_NOT_AVAILABLE =901;
