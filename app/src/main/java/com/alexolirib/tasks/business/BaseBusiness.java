@@ -5,8 +5,12 @@ import android.content.Context;
 import com.alexolirib.tasks.R;
 import com.alexolirib.tasks.constants.TaskConstants;
 import com.alexolirib.tasks.infra.InternetNotAvailableException;
+import com.alexolirib.tasks.infra.SecurityPreferences;
 import com.alexolirib.tasks.infra.operation.OperationResult;
 import com.google.gson.Gson;
+
+import java.util.AbstractMap;
+import java.util.HashMap;
 
 public abstract class BaseBusiness {
 
@@ -42,5 +46,15 @@ public abstract class BaseBusiness {
         }else{
             return TaskConstants.STATUS_CODE.INTERNAL_SERVER_ERROR;
         }
+    }
+
+    protected AbstractMap<String,String> getHeaderParams(){
+        SecurityPreferences preferences = new SecurityPreferences(mContext);
+
+        AbstractMap<String, String> headerParams = new HashMap<>();
+        headerParams.put(TaskConstants.HEADER.PERSON_KEY, preferences.getStoredString(TaskConstants.HEADER.PERSON_KEY));
+        headerParams.put(TaskConstants.HEADER.TOKEN_KEY, preferences.getStoredString(TaskConstants.HEADER.TOKEN_KEY));
+
+        return headerParams;
     }
 }

@@ -3,7 +3,7 @@ package com.alexolirib.tasks.manager;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.alexolirib.tasks.business.IPersonBusiness;
+import com.alexolirib.tasks.business.interfaces.IPersonBusiness;
 import com.alexolirib.tasks.business.PersonBusiness;
 import com.alexolirib.tasks.infra.operation.OperationListener;
 import com.alexolirib.tasks.infra.operation.OperationResult;

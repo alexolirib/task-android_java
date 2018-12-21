@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alexolirib.tasks.R;
+import com.alexolirib.tasks.constants.TaskConstants;
+import com.alexolirib.tasks.infra.SecurityPreferences;
 import com.alexolirib.tasks.infra.operation.OperationListener;
 import com.alexolirib.tasks.manager.PersonManager;
 
@@ -38,6 +40,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         this.mViewHolder.buttonLogin.setOnClickListener(this);
         this.mViewHolder.textRegister.setOnClickListener(this);
 
+        this.verifyLoggedUser();
+
+    }
+
+    private void verifyLoggedUser() {
+        SecurityPreferences securityPreferences = new SecurityPreferences(this.mContext);
+        String token = securityPreferences.getStoredString(TaskConstants.HEADER.PERSON_KEY);
+        String personKey = securityPreferences.getStoredString(TaskConstants.HEADER.PERSON_KEY);
+
+        if(!"".equals(token) && !"".equals(personKey)){
+            startActivity(new Intent(mContext, MainActivity.class));
+            finish();
+        }
     }
 
     @Override

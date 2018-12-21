@@ -1,4 +1,4 @@
-package com.alexolirib.tasks.business;
+package com.alexolirib.tasks.business.interfaces;
 
 import com.alexolirib.tasks.infra.operation.OperationResult;
 
