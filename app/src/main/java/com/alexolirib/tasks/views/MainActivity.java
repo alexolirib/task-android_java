@@ -1,5 +1,7 @@
 package com.alexolirib.tasks.views;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,15 +18,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.alexolirib.tasks.R;
+import com.alexolirib.tasks.manager.PersonManager;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewHolder mViewHolder = new ViewHolder();
+    private Context mContext;
+    private PersonManager mPersonManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.mContext = this;
+
+        mPersonManager = new PersonManager(mContext);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             } else if (id == R.id.nav_overdue) {
                 fragment = TaskListFragment.newInstance();
             } else if (id == R.id.nav_logout) {
+
+                handleLogout();
+
                 return true;
             }
         } catch (Exception e) {
@@ -79,6 +91,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void handleLogout() {
+        mPersonManager.logout();
+        startActivity(new Intent(mContext, LoginActivity.class));
+        finish();
     }
 
     /**

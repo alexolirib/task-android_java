@@ -5,9 +5,10 @@ import android.content.Context;
 import com.alexolirib.tasks.R;
 import com.alexolirib.tasks.constants.TaskConstants;
 import com.alexolirib.tasks.infra.InternetNotAvailableException;
+import com.alexolirib.tasks.infra.operation.OperationResult;
 import com.google.gson.Gson;
 
-public class BaseBusiness {
+public abstract class BaseBusiness {
 
     public Context mContext;
 
@@ -33,7 +34,6 @@ public class BaseBusiness {
     protected String handleErrorMessage(String json) {
         return new Gson().fromJson(json,String.class);
     }
-
     protected int handleStatusCode(Integer statusCode) {
         if(statusCode == TaskConstants.STATUS_CODE.FORBINDDEN){
             return TaskConstants.STATUS_CODE.FORBINDDEN;
