@@ -8,6 +8,8 @@ import com.alexolirib.tasks.entities.TaskEntity;
 import com.alexolirib.tasks.infra.operation.OperationListener;
 import com.alexolirib.tasks.infra.operation.OperationResult;
 
+import java.util.List;
+
 public class TaskManager {
 
     private TaskBusiness mTaskBusiness;
@@ -25,6 +27,26 @@ public class TaskManager {
 
             @Override
             protected void onPostExecute(OperationResult<Boolean> result) {
+                int error = result.getError();
+                if(error != OperationResult.NO_ERROR){
+                    listener.onError(error, result.getErrorMessage());
+                } else {
+                    listener.onSuccess(result.getResult());
+                }
+            }
+        };
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    public void getList(final OperationListener listener) {
+        AsyncTask<Void, Void, OperationResult<List<TaskEntity>>> task = new AsyncTask<Void, Void, OperationResult<List<TaskEntity>>>() {
+            @Override
+            protected OperationResult<List<TaskEntity>> doInBackground(Void... voids) {
+                return mTaskBusiness.getList();
+            }
+
+            @Override
+            protected void onPostExecute(OperationResult<List<TaskEntity>> result) {
                 int error = result.getError();
                 if(error != OperationResult.NO_ERROR){
                     listener.onError(error, result.getErrorMessage());

@@ -16,10 +16,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
     private List<TaskEntity> mListTaskEntities;
 
-    /**
-     * Construtor
-     */
     public TaskListAdapter(List<TaskEntity> taskList) {
+        this.mListTaskEntities=taskList;
     }
 
     @Override
@@ -36,11 +34,13 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
+        TaskEntity entity = this.mListTaskEntities.get(position);
+        holder.bindData(entity);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mListTaskEntities.size();
     }
 
 }

@@ -15,6 +15,8 @@ import com.alexolirib.tasks.R;
 import com.alexolirib.tasks.adapter.TaskListAdapter;
 import com.alexolirib.tasks.constants.TaskConstants;
 import com.alexolirib.tasks.entities.TaskEntity;
+import com.alexolirib.tasks.infra.operation.OperationListener;
+import com.alexolirib.tasks.manager.TaskManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
     private int mFilter;
     private List<TaskEntity> mTaskEntityList;
     private TaskListAdapter mTaskListAdapter;
+    private TaskManager mTaskManager;
     private ViewHolder mViewHolder = new ViewHolder();
 
     public static TaskListFragment newInstance(int filter) {
@@ -52,6 +55,7 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
 
         // Incializa as variáveis
         this.mContext = rootView.getContext();
+        this.mTaskManager = new TaskManager(this.mContext);
 
         // Inicializa elementos
         this.mViewHolder.floatAddTask = (FloatingActionButton) rootView.findViewById(R.id.float_add_task);
@@ -71,6 +75,33 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
         this.mViewHolder.recylerTaskList.setLayoutManager(new LinearLayoutManager(this.mContext));
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        this.mTaskEntityList = new ArrayList<>();
+        this.mTaskManager.getList(taskLoadedListener());
+
+
+    }
+
+    private OperationListener taskLoadedListener(){
+        return new OperationListener<List<TaskEntity>>(){
+            @Override
+            public void onSuccess(List<TaskEntity> result) {
+                mTaskEntityList.addAll(result);
+                mTaskListAdapter = new TaskListAdapter(mTaskEntityList);
+                mViewHolder.recylerTaskList.setAdapter(mTaskListAdapter);
+                //avisa que mudou
+                mTaskListAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onError(int errorCode, String errorMessage) {
+            }
+        };
     }
 
     @Override

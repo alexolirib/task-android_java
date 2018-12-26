@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alexolirib.tasks.R;
+import com.alexolirib.tasks.entities.TaskEntity;
+
 public class TaskViewHolder extends RecyclerView.ViewHolder {
 
     private TextView mTextDescription;
@@ -15,6 +18,10 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
 
     public TaskViewHolder(View itemView) {
         super(itemView);
+        this.mTextDescription = itemView.findViewById(R.id.text_description);
     }
 
+    public void bindData(TaskEntity entity) {
+        this.mTextDescription.setText(entity.getDescription());
+    }
 }
