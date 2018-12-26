@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.alexolirib.tasks.R;
+import com.alexolirib.tasks.constants.TaskConstants;
 import com.alexolirib.tasks.infra.operation.OperationListener;
 import com.alexolirib.tasks.manager.PersonManager;
 import com.alexolirib.tasks.manager.PriorityManager;
@@ -89,11 +90,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         try {
             if (id == R.id.nav_all_tasks) {
-                fragment = TaskListFragment.newInstance();
+                fragment = TaskListFragment.newInstance(TaskConstants.TASK_FILTER.NO_FILTER);
             } else if (id == R.id.nav_next_seven_days) {
-                fragment = TaskListFragment.newInstance();
+                fragment = TaskListFragment.newInstance(TaskConstants.TASK_FILTER.NEXT_7_DAYS);
             } else if (id == R.id.nav_overdue) {
-                fragment = TaskListFragment.newInstance();
+                fragment = TaskListFragment.newInstance(TaskConstants.TASK_FILTER.OVERDUE);
             } else if (id == R.id.nav_logout) {
 
                 handleLogout();
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Fragment fragment = null;
         try {
-            fragment = TaskListFragment.newInstance();
+            fragment = TaskListFragment.newInstance(TaskConstants.TASK_FILTER.NO_FILTER);
         } catch (Exception e) {
             e.printStackTrace();
         }

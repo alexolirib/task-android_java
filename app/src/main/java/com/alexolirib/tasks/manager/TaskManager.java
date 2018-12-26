@@ -3,27 +3,24 @@ package com.alexolirib.tasks.manager;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.alexolirib.tasks.business.PriorityBusiness;
-import com.alexolirib.tasks.business.interfaces.IPriorityBusiness;
-import com.alexolirib.tasks.entities.PriorityEntity;
+import com.alexolirib.tasks.business.TaskBusiness;
+import com.alexolirib.tasks.entities.TaskEntity;
 import com.alexolirib.tasks.infra.operation.OperationListener;
 import com.alexolirib.tasks.infra.operation.OperationResult;
 
-import java.util.List;
+public class TaskManager {
 
-public class PriorityManager {
+    private TaskBusiness mTaskBusiness;
 
-    IPriorityBusiness mPriorityBusiness;
-
-    public PriorityManager(Context context) {
-        this.mPriorityBusiness = new PriorityBusiness(context);
+    public TaskManager(Context context){
+        mTaskBusiness = new TaskBusiness(context);
     }
 
-    public void getList(final OperationListener<Boolean> listener) {
+    public void insert(final TaskEntity entity, final OperationListener listener){
         AsyncTask<Void, Void, OperationResult<Boolean>> task = new AsyncTask<Void, Void, OperationResult<Boolean>>() {
             @Override
             protected OperationResult<Boolean> doInBackground(Void... voids) {
-                return mPriorityBusiness.getList();
+                return mTaskBusiness.insert(entity);
             }
 
             @Override
@@ -36,11 +33,6 @@ public class PriorityManager {
                 }
             }
         };
-
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-
-    public List<PriorityEntity> getListLocal(){
-        return mPriorityBusiness.getListLocal();
     }
 }

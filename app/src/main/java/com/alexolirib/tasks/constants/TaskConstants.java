@@ -27,10 +27,21 @@ public class TaskConstants {
     }
 
     public static class API_PARAMETER{
-        public static String NAME = "name";
-        public static String EMAIL = "email";
-        public static String PASSWORD = "password";
-        public static String RECEIVE_NEWS = "receivenews";
+        public static class TASK {
+
+            public static String ID = "id";
+            public static String PRIORITYID = "priorityid";
+            public static String DESCRIPTION = "description";
+            public static String DUEDATE = "duedate";
+            public static String COMPLETE = "complete";
+        }
+
+        public static class PERSON {
+            public static String NAME = "name";
+            public static String EMAIL = "email";
+            public static String PASSWORD = "password";
+            public static String RECEIVE_NEWS = "receivenews";
+        }
     }
 
     public static class OPERATION_METHOD {
@@ -52,6 +63,13 @@ public class TaskConstants {
         public static final int INTERNAL_SERVER_ERROR =500;
         public static final int INTERNET_NOT_AVAILABLE =901;
 
+    }
+
+    public static class TASK_FILTER {
+        public static final String KEY = "taskFilterKey";
+        public static final int NO_FILTER = 0;
+        public static final int OVERDUE = 1;
+        public static final int NEXT_7_DAYS = 2;
     }
 
 }

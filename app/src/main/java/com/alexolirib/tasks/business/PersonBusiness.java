@@ -38,10 +38,10 @@ public class PersonBusiness extends  BaseBusiness implements IPersonBusiness {
             builder.addResource(TaskConstants.ENDPOINT.AUTHENTICATION_CREATE);
 
             AbstractMap<String, String> params = new HashMap<>();
-            params.put(TaskConstants.API_PARAMETER.NAME, name);
-            params.put(TaskConstants.API_PARAMETER.EMAIL, email);
-            params.put(TaskConstants.API_PARAMETER.PASSWORD, password);
-            params.put(TaskConstants.API_PARAMETER.RECEIVE_NEWS, FormatUrlParameters.formatBoolean(false));
+            params.put(TaskConstants.API_PARAMETER.PERSON.NAME, name);
+            params.put(TaskConstants.API_PARAMETER.PERSON.EMAIL, email);
+            params.put(TaskConstants.API_PARAMETER.PERSON.PASSWORD, password);
+            params.put(TaskConstants.API_PARAMETER.PERSON.RECEIVE_NEWS, FormatUrlParameters.formatBoolean(false));
 
             FullParameters full = new FullParameters(TaskConstants.OPERATION_METHOD.POST,
                     builder.getUri(),
@@ -81,8 +81,8 @@ public class PersonBusiness extends  BaseBusiness implements IPersonBusiness {
             urlBuilder.addResource(TaskConstants.ENDPOINT.AUTHENTICATION_LOGIN);
 
             AbstractMap<String, String> params = new HashMap<>();
-            params.put(TaskConstants.API_PARAMETER.EMAIL, email);
-            params.put(TaskConstants.API_PARAMETER.PASSWORD, pass);
+            params.put(TaskConstants.API_PARAMETER.PERSON.EMAIL, email);
+            params.put(TaskConstants.API_PARAMETER.PERSON.PASSWORD, pass);
 
             FullParameters full = new FullParameters(
                     TaskConstants.OPERATION_METHOD.POST,

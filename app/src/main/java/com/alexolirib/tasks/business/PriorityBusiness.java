@@ -70,4 +70,8 @@ public class PriorityBusiness extends BaseBusiness implements IPriorityBusiness 
         return result;
     }
 
+    @Override
+    public List<PriorityEntity> getListLocal() {
+        return this.mPriorityRepository.getList();
+    }
 }

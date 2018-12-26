@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.alexolirib.tasks.R;
 import com.alexolirib.tasks.adapter.TaskListAdapter;
+import com.alexolirib.tasks.constants.TaskConstants;
 import com.alexolirib.tasks.entities.TaskEntity;
 
 import java.util.ArrayList;
@@ -21,18 +22,26 @@ import java.util.List;
 public class TaskListFragment extends Fragment implements View.OnClickListener {
 
     private Context mContext;
+    private int mFilter;
     private List<TaskEntity> mTaskEntityList;
     private TaskListAdapter mTaskListAdapter;
     private ViewHolder mViewHolder = new ViewHolder();
 
-    public static TaskListFragment newInstance() {
+    public static TaskListFragment newInstance(int filter) {
         TaskListFragment fragment = new TaskListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(TaskConstants.TASK_FILTER.KEY, filter);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(getArguments() != null){
+            this.mFilter = getArguments().getInt(TaskConstants.TASK_FILTER.KEY);
+        }
     }
 
     @Override
