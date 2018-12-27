@@ -18,6 +18,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskViewHolder> {
 
     public TaskListAdapter(List<TaskEntity> taskList) {
         this.mListTaskEntities=taskList;
+        String as = "";
     }
 
     @Override

@@ -82,7 +82,8 @@ public class TaskListFragment extends Fragment implements View.OnClickListener {
         super.onResume();
 
         this.mTaskEntityList = new ArrayList<>();
-        this.mTaskManager.getList(taskLoadedListener());
+        this.mTaskManager.getList(mFilter,taskLoadedListener());
+
 
 
     }

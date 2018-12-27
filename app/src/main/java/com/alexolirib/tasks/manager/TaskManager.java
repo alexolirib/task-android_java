@@ -38,11 +38,11 @@ public class TaskManager {
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
-    public void getList(final OperationListener listener) {
+    public void getList(final int filter, final OperationListener listener) {
         AsyncTask<Void, Void, OperationResult<List<TaskEntity>>> task = new AsyncTask<Void, Void, OperationResult<List<TaskEntity>>>() {
             @Override
             protected OperationResult<List<TaskEntity>> doInBackground(Void... voids) {
-                return mTaskBusiness.getList();
+                return mTaskBusiness.getList(filter);
             }
 
             @Override

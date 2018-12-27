@@ -120,7 +120,7 @@ public class ExternalRepository {
     private String getQuery(AbstractMap<String, String> params, String method) throws UnsupportedEncodingException {
         //Task/Overdue?pagesize=50&page=3(query string) - depois do "?" vem com chave e valor
         if(params == null){
-            return null;
+            return "";
         }
         StringBuilder builder = new StringBuilder();
         //pois começa com "?"

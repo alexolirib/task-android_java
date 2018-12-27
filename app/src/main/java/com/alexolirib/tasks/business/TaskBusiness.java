@@ -64,7 +64,7 @@ public class TaskBusiness extends BaseBusiness implements ITaskBusiness {
     }
 
     @Override
-    public OperationResult<List<TaskEntity>> getList() {
+    public OperationResult<List<TaskEntity>> getList(int filter) {
         OperationResult<List<TaskEntity>> result = new OperationResult<>();
 
         try{
@@ -76,13 +76,13 @@ public class TaskBusiness extends BaseBusiness implements ITaskBusiness {
 
             FullParameters full = new FullParameters(
                     TaskConstants.OPERATION_METHOD.GET,
-                    urlBuilder.getUri(), null, (HashMap)headerParams);
+                    urlBuilder.getUri(), (HashMap)headerParams, null);
 
             APIResponse response = this.mExternalRepository.execute(full);
 
             if(response.getStatusCode() == TaskConstants.STATUS_CODE.SUCCESS){
 
-                Type collection = new TypeToken<List<PriorityEntity>>(){}.getType();
+                Type collection = new TypeToken<List<TaskEntity>>(){}.getType();
                 List<TaskEntity> list = new Gson().fromJson(response.getJson(),collection);
 
                 result.setResult(list);

@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ITaskBusiness {
     OperationResult<Boolean> insert(TaskEntity task);
-    OperationResult<List<TaskEntity>> getList();
+    OperationResult<List<TaskEntity>> getList(int filter);
 }

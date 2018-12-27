@@ -3,6 +3,7 @@ package com.alexolirib.tasks.business;
 import android.content.Context;
 
 import com.alexolirib.tasks.business.interfaces.IPriorityBusiness;
+import com.alexolirib.tasks.constants.PriorityCacheConstants;
 import com.alexolirib.tasks.constants.TaskConstants;
 import com.alexolirib.tasks.entities.APIResponse;
 import com.alexolirib.tasks.entities.FullParameters;
@@ -57,6 +58,9 @@ public class PriorityBusiness extends BaseBusiness implements IPriorityBusiness 
                 //salvar no banco as prioridades
                 this.mPriorityRepository.clearData();
                 this.mPriorityRepository.insert(list);
+
+                //salvo valores no cache
+                PriorityCacheConstants.setValues(list);
 
                 result.setResult(true);
             } else{
