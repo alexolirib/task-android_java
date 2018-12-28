@@ -30,9 +30,9 @@ public class TaskConstants {
         public static class TASK {
 
             public static String ID = "id";
-            public static String PRIORITYID = "priorityid";
+            public static String PRIORITY_ID = "priorityid";
             public static String DESCRIPTION = "description";
-            public static String DUEDATE = "duedate";
+            public static String DUE_DATE = "duedate";
             public static String COMPLETE = "complete";
         }
 

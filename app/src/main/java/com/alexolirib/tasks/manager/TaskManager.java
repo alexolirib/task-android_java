@@ -57,4 +57,93 @@ public class TaskManager {
         };
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
+
+    public void get(final int taskId, final OperationListener<TaskEntity> listener) {
+        AsyncTask<Void, Integer, OperationResult<TaskEntity>> task = new AsyncTask<Void, Integer, OperationResult<TaskEntity>>() {
+            @Override
+            protected OperationResult<TaskEntity> doInBackground(Void... voids) {
+                return mTaskBusiness.get(taskId);
+            }
+
+            @Override
+            protected void onPostExecute(OperationResult<TaskEntity> result) {
+                int error = result.getError();
+                if (error != OperationResult.NO_ERROR) {
+                    listener.onError(error, result.getErrorMessage());
+                } else {
+                    listener.onSuccess(result.getResult());
+                }
+            }
+        };
+
+        // Executa async
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    public void update(final TaskEntity taskEntity, final OperationListener<Boolean> listener) {
+        AsyncTask<Void, Integer, OperationResult<Boolean>> task = new AsyncTask<Void, Integer, OperationResult<Boolean>>() {
+            @Override
+            protected OperationResult<Boolean> doInBackground(Void... voids) {
+                return mTaskBusiness.update(taskEntity);
+            }
+
+            @Override
+            protected void onPostExecute(OperationResult<Boolean> result) {
+                int error = result.getError();
+                if (error != OperationResult.NO_ERROR) {
+                    listener.onError(error, result.getErrorMessage());
+                } else {
+                    listener.onSuccess(result.getResult());
+                }
+            }
+        };
+
+        // Executa async
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    public void complete(final int id, final Boolean complete, final OperationListener<Boolean> listener) {
+        AsyncTask<Void, Integer, OperationResult<Boolean>> task = new AsyncTask<Void, Integer, OperationResult<Boolean>>() {
+            @Override
+            protected OperationResult<Boolean> doInBackground(Void... voids) {
+                return mTaskBusiness.complete(id, complete);
+            }
+
+            @Override
+            protected void onPostExecute(OperationResult<Boolean> result) {
+                int error = result.getError();
+                if (error != OperationResult.NO_ERROR) {
+                    listener.onError(error, result.getErrorMessage());
+                } else {
+                    listener.onSuccess(result.getResult());
+                }
+            }
+        };
+
+        // Executa async
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    public void delete(final int taskId, final OperationListener<Boolean> listener) {
+        AsyncTask<Void, Integer, OperationResult<Boolean>> task = new AsyncTask<Void, Integer, OperationResult<Boolean>>() {
+            @Override
+            protected OperationResult<Boolean> doInBackground(Void... voids) {
+                return mTaskBusiness.delete(taskId);
+            }
+
+            @Override
+            protected void onPostExecute(OperationResult<Boolean> result) {
+                int error = result.getError();
+                if (error != OperationResult.NO_ERROR) {
+                    listener.onError(error, result.getErrorMessage());
+                } else {
+                    listener.onSuccess(result.getResult());
+                }
+            }
+        };
+
+        // Executa async
+        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
 }
